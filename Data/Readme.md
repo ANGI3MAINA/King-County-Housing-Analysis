@@ -63,7 +63,7 @@ olumn Names and descriptions for Kings County Data Set
 
 # Feature Selection
 * **In this step, based on the correlation coefficients, we pick features to be included in the modeling process. We consider a correlation coefficient of above 0.5**
-
+t
 
 
 
