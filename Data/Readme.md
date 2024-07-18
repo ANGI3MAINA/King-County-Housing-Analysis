@@ -19,7 +19,7 @@ Accurately predicting house prices is essential for buyers, sellers, and investo
 
 ## DATA UNDERSTANDING
 
-King  County Housing data contains sales price of properties  sold between y1 and y2 as well as various fetures for specific properties. The colums are well described below:
+King  County Housing data contains sales price of properties  sold between 2014 and 2015 as well as various fetures for specific properties. The colums are well described below:
 olumn Names and descriptions for Kings County Data Set
 * **id** - unique identifier  for a house
 * **dateDate** - This is the date whwn the house was sold
