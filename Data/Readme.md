@@ -64,7 +64,7 @@ olumn Names and descriptions for Kings County Data Set
 # Feature Selection
 * **In this step, based on the correlation coefficients, we pick features to be included in the modeling process. We consider a correlation coefficient of above 0.5**
 
-# Exploring Linearity Models
+# Exploring Linear  Regression Assumptions
  Some of the linearity assumptions checked in the  fetures selected models include;
  # 1. Normality
  * **Checking Skewness is the linearity of the features distribution** -   The Skewness of the features was outlined as below:
