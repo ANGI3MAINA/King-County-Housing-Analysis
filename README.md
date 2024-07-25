@@ -1,168 +1,204 @@
-## Predicting House Prices in King County: A Comprehensive Analysis Using Multiple Linear Regression Models
+
+### README
+
+Predicting House Prices in King County: A Comprehensive Analysis Using Multiple Linear Regression Models
+
+## Overview
+
+This repository contains a Jupyter Notebook titled `index.ipynb`, which focuses on predicting house prices in King County, Washington, using multiple linear regression models. The analysis leverages various property features to provide insights for different stakeholders in the real estate industry, such as investors, agents, developers, and market analysts.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Problem Statement](#problem-statement)
+3. [Objectives](#objectives)
+4. [Data Sources and Description](#data-sources-and-description)
+5. [Data Understanding](#data-understanding)
+6. [Data Cleaning](#data-cleaning)
+7. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+8. [Model Building](#model-building)
+9. [Model Evaluation](#model-evaluation)
+10. [Conclusion](#conclusion)
+11. [Recommendations](#recommendations)
+12. [Running the Notebook](#running-the-notebook)
+13. [Contributing](#contributing)
+14. [License](#license)
+
 ## Introduction
+
 Accurately predicting house prices is essential for buyers, sellers, and investors in the real estate market. This project focuses on predicting house prices in King County, Washington, using multiple linear regression models. We analyze various features such as living space, quality grade, and the number of bathrooms to determine their impact on house prices. By incrementally adding features to our models, we aim to identify the most significant predictors and develop a robust model for price forecasting.
 
-## Key Objectives 
+## Problem Statement
 
-1. Develop Accurate Predictive Models for House Prices: Create and evaluate multiple linear regression models to predict house prices in King County.
-2. Identify Key Factors Influencing House Prices: Analyze various features to determine their impact on house prices.
-3. Provide Actionable Recommendations for Property Value Enhancement based on model results and feature analysis.
-4. Guide homeowners and real estate professionals in optimizing property quality and features to increase market value.
+The Real Estate Development Company is looking to enter the King County housing market. They face significant challenges in identifying the most important features that influence housing prices. The objective is to develop a comprehensive analysis that helps the company make data-driven decisions on property investments by focusing on key factors such as square footage, property grade, the number of bathrooms, and location. By understanding these factors, the company aims to create a profitable sales strategy targeting houses with the highest prices in the market.
 
-## Outline
-1. Data Analysis and Cleaning: Loaded and cleaned the King County House Sales dataset, handling missing values and outliers.
-2. Exploratory Data Analysis (EDA):  Visualized the distribution of house prices and explored relationships between features and prices.
-3. Identified key features with the highest correlations to house prices.
-4. Model Development: Built and evaluated 4 linear regression models with increasing complexity:
-5. Model Evaluation: Assessed model performance using Mean Absolute Error (MAE) and R-squared (R²).
-6. Recommendations: Provided actionable insights for homeowners and real estate professionals to enhance property values by focusing on quality improvements and optimizing living space.
+## Objectives
 
-## DATA UNDERSTANDING
+1. **Assist Real Estate Investors and Home Buyers:**
+   - **Objective:** Determine the influence of key property features on house prices to guide investment and purchasing decisions.
+   - **Action:** Identify how changes in square footage, property grade, and other significant features affect the overall price of properties.
 
-King  County Housing data contains sales price of properties  sold between 2014 and 2015 as well as various fetures for specific properties. The colums are well described below:
-olumn Names and descriptions for Kings County Data Set
-* **id** - unique identifier  for a house
-* **dateDate** - This is the date whwn the house was sold
-* **pricePrice** -  is prediction target
-* **bedroomsNumber** - This is the number  of Bedrooms in the House
-* **bathroomsNumber** -  of bathrooms/bedrooms
-* **sqft_livingsquare** -  footage of the home
-* **sqft_lotsquare** -  footage of the lot
-* **floorsTotal** -  floors (levels) in house
-* **waterfront** - House which has a view to a waterfront
-* **view** - Has been viewed
-* **condition** - How good the condition is ( Overall )
-* **grade** - overall grade given to the housing unit, based on King County grading system
-* **sqft_above** - square footage of house apart from basement
-* **sqft_basement** - square footage of the basement
-* **yr_built** - Built Year
-* **yr_renovated** - Year when house was renovated
-* **zipcode** - zip
-* **lat** - Latitude coordinate
-* **long** - Longitude coordinate
-* **sqft_living15** - The square footage of interior housing living space for the nearest 15 neighbors
-* **sqft_lot15** - The square footage of the land lots of the nearest 15 neighbors
+2. **Guide Real Estate Agents:**
+   - **Objective:** Understand the impact of various property features on house prices to enhance marketing strategies.
+   - **Action:** Emphasize the role of significant features such as property grade and square footage in influencing pricing when representing homes to potential buyers.
 
-## STEPS 
-1. Loading The Imports
-2. Exploratory Data analysis , and cleaning Using Pandas
-3. Data Analysis
-4. Feature Selection
-5. Exploring the Linearity Assumptions
-6. Fitting Linear regression Models
-7. Discussion of the Results
-8. Conclusions and Recomendations
+3. **Advise Property Developers:**
+   - **Objective:** Evaluate the effect of adding and enhancing property features on house prices to inform development strategies.
+   - **Action:** Assess how the inclusion of additional bathrooms and improvements in property grade impact property valuation and buyer preferences.
 
-# Loading the Imports
-* **In this step we import the necessary modules and packages  necessary for the the**
-
-# Exploratory Data analysis , and cleaning Using Pandas
-* **In this step we use Pandas library to understand the the structure of King County datasets using fuctions such as df.head(), df.info(), df.isna() etc**
-* **this is followed by data cleaning i.e dealing with the missing values in the Waterfront column**
-* **we do a little bit of visualizations to figure out the correlation between the prices and the res of the columns. The results from this step aind in determining what features we need to consider for moddeling**
-
-# Feature Selection
-* **In this step, based on the correlation coefficients, we pick features to be included in the modeling process. We consider a correlation coefficient of above 0.5**
-
-# Exploring Linear  Regression Assumptions
- Some of the linearity assumptions checked in the  fetures selected models include;
- # 1. Normality
- * **Checking Skewness is the linearity of the features distribution** -   The Skewness of the features was outlined as below:
-**price          4.023116**
-
-**sqft_living    1.473192**
-
-**grade          0.788431**
-
-**bathrooms      0.519766**
-
-**bedrooms       2.023584**
-
-**floors         0.614843**
+4. **Support Real Estate Market Analysts:**
+   - **Objective:** Analyze the variation in house prices across different zip codes to refine market assessments.
+   - **Action:** Examine how zip codes and other location-based features affect property prices and identify which areas are associated with higher or lower values.
 
 
-this informed the next  step which was dealing with outliers
+## Data Sources and Description
 
-* **Removing Outliers**- the skeness of the data significantly reduced after removing the outliers as shown below:
+The dataset used for this project is the King County House Sales dataset, which includes comprehensive information on property features and sale prices. This dataset is suitable for evaluating the effects of different aspects of houses on prices due to its completeness and relevance.
 
-price; 0.778495
+### Data Columns
 
-sqft_living ; 0.518488
+- `id`: Unique identifier for a house.
+- `date`: Date when the house was sold.
+- `price`: Sale price (prediction target).
+- `bedrooms`: Number of bedrooms.
+- `bathrooms`: Number of bathrooms.
+- `sqft_living`: Square footage of the home.
+- `sqft_lot`: Square footage of the lot.
+- `floors`: Total floors (levels) in the house.
+- `waterfront`: Whether the house has a view of a waterfront.
+- `view`: Number of times the house has been viewed.
+- `condition`: Overall condition of the house.
+- `grade`: Overall grade given to the housing unit.
+- `sqft_above`: Square footage of the house apart from the basement.
+- `sqft_basement`: Square footage of the basement.
+- `yr_built`: Year when the house was built.
+- `yr_renovated`: Year when the house was renovated.
+- `zipcode`: Zip code of the property.
+- `lat`: Latitude coordinate.
+- `long`: Longitude coordinate.
+- `sqft_living15`: Living space of the nearest 15 neighbors.
+- `sqft_lot15`: Land lots of the nearest 15 neighbors.
 
-grade  ; 0.259773
+## Data Understanding
 
-bathrooms ;-0.040541
+The dataset contains relevant features that are crucial for meeting our objectives. However, some limitations include non-normal distribution of data, missing values, and potential outliers.
 
-bedrooms; 0.234265
+## Data Cleaning
 
-floors; 0.768639
+### Handling Missing Values
 
-* **Log Transformation** - This was key to enhancing normality of the features' distribution.
-upon visualization, most of the features assumed near normal distribution.
+Waterfront Column:
+The proportion of missing values in the waterfront column was calculated.
+Missing values in the waterfront column were imputed with the mode of the column.
+The waterfront column was then converted to a categorical type.
 
-# 2. Heteroscedasticity
-We fitted the fitted fatures against the residuals using a scatter plot. The cone-shaped distribution indicated  that the fetures were heteroscedastic hence acsertaining the efficiency of our confidence intervals.
+## Exploratory Data Analysis (EDA)
 
-## Fitting Linear Regression Models
+### Visualizing Data
 
-#### MODEL 1: Simple regression with sqft_living and price
-This model predicted house prices base on the square footage of interior housing living space
-The model's R2 was,0.3052 with and MSE of 0.2912
+- Use histograms and box plots to understand the spread and identify outliers.
+- Create a correlation heatmap to identify relationships between features.
 
-#### MODEL 2: Sqft_living, grade and price 
+```python
+# Correlation Heatmap
+plt.subplots(figsize=(20, 15))
+sns.heatmap(data.corr(), cmap="coolwarm", annot=True)
+plt.show()
+```
 
-In this model we increased the number of predictors to two ;overall grade given to the housing unit and the square footage of interior housing living space
-The model's R2 was,0.3725 with and MAE of 0.3725
+## Model Building
+In this project, we incrementally built three multiple linear regression models to predict house prices. Each model added more features to evaluate their impact on the prediction accuracy. We assessed each model based on performance metrics such as Mean Squared Error (MSE) and R-squared (R²).
 
-#### MODEL 3: Regression with Three Features (sqft_living, grade, bathrooms)
-In this model we increased the number of predictors to three ;overall grade given to the housing unit, the square footage of interior housing living space and the number of bathrooms
-The model's R2 was,0.2739 with and MAE of 0.3742
+Model 1: Baseline Model
+Features Used: Square footage of living space (sqft_living).
+Training: The model was trained using sqft_living as the sole predictor.
+Evaluation: Performance metrics were calculated to serve as a baseline for comparison with subsequent models.
 
-#### MODEL 4: regression with all the selected features 
-In this model we increased the number of predictors to four ;overall grade given to the housing unit, the square footage of interior housing living space the number of bathrooms, total number of floors per house and the total number of bathrooms.
-The model's R2 was,0.3769 with and MAE of 0.2731.
+Model 2: Extended Model
+Features Used: sqft_living, Number of bathrooms (bathrooms), and Property grade (grade).
+Training: The model included additional features to improve prediction accuracy.
+Evaluation: Performance metrics were recalculated to assess the impact of the new features.
 
+Model 3: Comprehensive Model
+Features Used: sqft_living, bathrooms, grade, Square footage of the lot (sqft_lot), and Year built (yr_built).
+Training: Additional features were included for a more comprehensive model.
+Evaluation: Final performance metrics were calculated to determine the effectiveness of the comprehensive model.
 
-## Discussion of the Results
-The analysis of house prices using multiple linear regression models demonstrated that adding more features incrementally improves predictive accuracy and explanatory power. Model 1, with only sqft_living, explained 30.53% of the variance in house prices, indicating a moderate relationship between living area size and prices.
+```python
+# Train Test Split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
-Model 2 included grade, increasing the R-squared to 37.26%, showing that house quality is also significant. However, the MAE increased slightly, suggesting potential overfitting. Model 3, which added bathrooms, improved the MAE to 0.2740 and the R-squared to 37.43%, confirming the relevance of the number of bathrooms.
+# Train the model
+model = LinearRegression()
+model.fit(x_train_scaled, y_train)
+y_pred = model.predict(x_test_scaled)
+```
 
-Model 4, incorporating all features, had the best performance with an MAE of 0.2731 and an R-squared of 37.69%. This comprehensive model highlighted that multiple features together provide a better understanding of house price determinants. Key coefficients showed grade (0.1793) had the most substantial positive impacts on prices.
+## Model Evaluation
 
-The analysis of house prices using multiple linear regression models demonstrated that adding more features incrementally improves predictive accuracy and explanatory power. Model 1, with only sqft_living, explained 30.53% of the variance in house prices, indicating a moderate relationship between living area size and prices.
+- Comparisons for  model predictions with actual values with calculate performance metrics was conducted to evaluate a model performance, and comparing across models
 
-Model 2 included grade, increasing the R-squared to 37.26%, showing that house quality is also significant. However, the MAE increased slightly, suggesting potential overfitting. Model 3, which added bathrooms, improved the MAE to 0.2740 and the R-squared to 37.43%, confirming the relevance of the number of bathrooms.
+```python
+# Model Evaluation
+mse = mean_squared_error(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
 
-Model 4, incorporating all features, had the best performance with an MAE of 0.2731 and an R-squared of 37.69%. This comprehensive model highlighted that multiple features together provide a better understanding of house price determinants. Key coefficients showed grade (0.1793) had the most substantial positive impacts on prices.
+print("MSE:", mse)
+print("MAE:", mae)
+print("R2:", r2)
+```
 
-## Conclusions 
+## Conclusion
 
-Best Predictive Model: Model 4, using all features, is the most accurate and robust for predicting house prices. It balances prediction accuracy and explanatory power effectively.
+The OLS regression analysis of house prices in King County reveals the following key insights:
 
-Key Influencing Features: Grade is the most influential features positively affecting house prices. Enhancing property quality and optimizing living space can significantly increase property values.
+Square Footage (sqft_living): This feature shows a strong positive relationship with house prices. Each additional square foot increases the house price by approximately $0.45. This indicates that larger homes generally command higher prices.
 
+Property Grade (grade): Higher grades are associated with higher house prices. Each one-point increase in the property's grade increases its price by about $0.19. This suggests that better-quality homes are valued more highly in the market.
 
-## Key Recommendations
+Number of Bathrooms (bathrooms): Unexpectedly, each additional bathroom decreases the house price by approximately $32.00. This negative impact suggests that adding more bathrooms may not always lead to higher property values, contrary to common assumptions.
 
-1. Enhance Property Quality: Invest in improving the overall quality (grade) of properties. High-quality materials and design standards lead to substantial returns.
+Zipcode (zipcode): The effect of zipcodes on house prices varies significantly. Some zipcodes (e.g., 98004 and 98005) are associated with higher prices, while others have a less favorable effect. Location remains a crucial factor in determining property values.
 
-2. Optimize Living Space: Increase living space (sqft_living) thoughtfully, ensuring additional space enhances functionality and appeal without unnecessary expansions.
+Overall, these findings highlight the importance of square footage, property grade, and location in influencing house prices. However, the negative relationship between the number of bathrooms and house prices warrants further investigation.
 
-3. Balanced Feature Development: Aim for a balanced approach in adding features like floors, bathrooms, and bedrooms. Focus on usability, aesthetics, and overall appeal to avoid potential negative impacts on house prices.
+## Recommendations
 
-Implementing these recommendations helps stakeholders understand the factors influencing house prices and make informed decisions to enhance property value effectively.
+### Business Strategy Implications
 
+1. **Target Larger Houses**: Focus on acquiring or developing larger houses to maximize potential sales prices.
+2. **Focus on High-Grade Houses**: Develop or invest in properties with higher quality finishes and features.
+3. **Investigate Bathroom Anomaly**: Re-examine properties with many bathrooms to understand the negative price relationship.
+4. **Consider Additional Predictors**: Incorporate additional variables such as location and lot size for a more comprehensive model.
+5. **Use Predictive Analytics for Marketing**: Create targeted marketing strategies to attract high-end buyers.
 
+## Running the Notebook
 
+To run the notebook, follow these steps:
 
+1. Clone the repository to your local machine.
+2. Open a terminal and navigate to the cloned repository.
+3. Open the `index.ipynb` notebook from the Jupyter interface.
+4. Run the cells in sequential order to execute the analysis.
 
+## Contributing
 
+Contributions are welcome! To contribute, follow these steps:
 
+1. Fork this repository.
+2. Create a new branch:
 
+3. Make your changes and commit them:
 
+4. Push to the branch:
 
+5. Create a pull request.
 
+## License
 
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
 
+---
 
+This README provides a comprehensive guide to navigating and utilizing the `index.ipynb` notebook. It ensures that users understand the structure, data, and steps needed to run the analysis effectively.
